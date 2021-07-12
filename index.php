@@ -75,30 +75,9 @@ function get_children($name) { //25pts
 	}
 	return $children;
 }
-// function get_children($name) { //15pts
-// 	global $conn;
-// //mengambil semua direct-child dari input
-// //mengembalikan array of string yang berisi daftar nama child
-// 	$children = array();
-// 	$q_init = "SELECT * FROM member where name = '".$name."'";
-// 	$exec_init = mysqli_query($conn,$q_init);
-// 	$res_init = mysqli_fetch_array($exec_init);
-
-// 	$q = "SELECT * FROM member where parent_id = ".$res_init["id"]." && id != ".$res_init["id"];
-// 	$exec = mysqli_query($conn,$q);
-
-// 	while($data = mysqli_fetch_assoc($exec)) { 
-// 		$children = get_children($data["name"]);
-// 		$template = array(
-// 			"name" => $data["name"],
-// 			"children" => $children
-// 		);
-// 		array_push($children, $template);
-// 	}
-// 	return $children;
-// }
 $tree = get_tree();
 echo json_encode($tree);
+
 echo "<br><br><hr><br><br>";
 
 $tree = get_tree('Andre');
@@ -123,6 +102,5 @@ echo "<br><br><hr><br><br>";
 $children = get_children('John');
 echo json_encode($children);
 /* akan menulis : [] */
-
 
 ?>
